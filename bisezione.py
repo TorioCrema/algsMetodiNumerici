@@ -2,7 +2,7 @@ import numpy as np
 import math
 
 def sign(x):
-    return math.copysign(x)
+    return math.copysign(1, x)
 
 def metodo_bisezione(fname, a, b, tolx,tolf):
     """
