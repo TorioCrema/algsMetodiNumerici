@@ -31,8 +31,8 @@ def corde(fname,m,x0,tolx,tolf,nmax):
         (xi,f(xi)) e ha pendenza uguale a m  e l'asse x
         '''
         x1 = x0 - d
-        fx1=fname(x1)
-        it=it+1
+        fx1 = fname(x1)
+        it = it + 1
         
         xk.append(x1)
         

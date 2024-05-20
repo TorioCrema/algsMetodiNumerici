@@ -4,6 +4,7 @@ def my_newtonSys(fun, jac, x0, tolx, tolf, nmax):
     """
     Funzione per la risoluzione del sistema F(x)=0
     mediante il metodo di Newton.
+    Convergenza locale, quadratica.
 
     Parametri
     ----------

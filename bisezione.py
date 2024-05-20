@@ -2,11 +2,13 @@ import numpy as np
 import math
 
 def sign(x):
-    return math.copysign(1, x)
+    return np.sign(x)
 
 def metodo_bisezione(fname, a, b, tolx,tolf):
     """
     Implementa il metodo di bisezione per il calcolo degli zeri di un'equazione non lineare.
+    Ordine di convergenza lineare p = 1, e fattore di convergenza c = 1/2.
+    Convergenza globale.
 
     Parametri:
     f: La funzione da cui si vuole calcolare lo zero.
@@ -17,8 +19,8 @@ def metodo_bisezione(fname, a, b, tolx,tolf):
     Restituisce:
     Lo zero approssimato della funzione, il numero di iterazioni e la lista di valori intermedi.
     """
-    fa=fname(a)
-    fb=fname(b)
+    fa = fname(a)
+    fb = fname(b)
     if sign(fa) * sign(fb) > 0:
         print("Non è possibile applicare il metodo di bisezione \n")
         return None, None,None
@@ -33,15 +35,14 @@ def metodo_bisezione(fname, a, b, tolx,tolf):
         xk = a + (b - a) / 2 
         v_xk.append(xk)
         it += 1
-        fxk=fname(xk)
-        if fxk==0:
+        fxk = fname(xk)
+        if fxk == 0:
             return xk, it, v_xk
-
         
-        if sign(fa)*sign(fxk)>0:   
+        if sign(fa) * sign(fxk) > 0:   
             a = xk
             fa = fxk
-        elif sign(fxk)*sign(fb)>0:    
+        elif sign(fxk) * sign(fb) > 0:    
             b = xk
             fb = fxk
     

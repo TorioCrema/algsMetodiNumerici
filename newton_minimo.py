@@ -44,7 +44,7 @@ def my_newton_minimo_MOD(gradiente, Hess, x0, tolx, tolf, nmax):
     # Aggiornamento della soluzione
     it = 1
     x1 = x0 + s
-    grad_fx1=np.array([gradiente[0](x1[0],x1[1]),gradiente[1](x1[0],x1[1])])
+    grad_fx1 = np.array([gradiente[0](x1[0],x1[1]), gradiente[1](x1[0],x1[1])])
     Xm = [np.linalg.norm(s, 1)]
     
     while it <= nmax and np.linalg.norm(grad_fx1, 1) >= tolf and np.linalg.norm(s, 1) >= tolx * np.linalg.norm(x1, 1):
@@ -53,7 +53,8 @@ def my_newton_minimo_MOD(gradiente, Hess, x0, tolx, tolf, nmax):
         it += 1
         matHess = np.array([[Hess[0, 0](x0[0], x0[1]), Hess[0, 1](x0[0], x0[1])],
                             [Hess[1, 0](x0[0], x0[1]), Hess[1, 1](x0[0], x0[1])]])
-        grad_fx0=grad_fx1
+
+        grad_fx0 = grad_fx1
         
         if np.linalg.det(matHess) == 0:
             print("La matrice Hessiana calcolata nell'iterato precedente non è a rango massimo")
@@ -64,7 +65,7 @@ def my_newton_minimo_MOD(gradiente, Hess, x0, tolx, tolf, nmax):
         # Aggiornamento della soluzione
         x1 = x0 + s
         #Aggiorno il gradiente per la prossima iterazione 
-        grad_fx1=np.array([gradiente[0](x1[0],x1[1]),gradiente[1](x1[0],x1[1])])
+        grad_fx1 = np.array([gradiente[0](x1[0],x1[1]), gradiente[1](x1[0],x1[1])])
         print(np.linalg.norm(s, 1))
         Xm.append(np.linalg.norm(s, 1))
 
@@ -106,7 +107,7 @@ def my_newton_minimo(gradiente, Hess, x0, tolx, tolf, nmax):
     if np.linalg.det(matHess) == 0:
         print("La matrice Hessiana calcolata nell'iterato precedente non è a rango massimo")
         return None, None, None
-    grad_fx0= gradiente(x0)    
+    grad_fx0 = gradiente(x0)    
     s = -np.linalg.solve(matHess, gradiente(x0))
     # Aggiornamento della soluzione
     it = 1
@@ -119,7 +120,7 @@ def my_newton_minimo(gradiente, Hess, x0, tolx, tolf, nmax):
         x0 = x1
         it += 1
         matHess = Hess(x0)
-        grad_fx0=grad_fx1
+        grad_fx0 = grad_fx1
         
         if np.linalg.det(matHess) == 0:
             print("La matrice Hessiana calcolata nell'iterato precedente non è a rango massimo")

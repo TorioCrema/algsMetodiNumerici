@@ -32,7 +32,7 @@ def my_newtonSys_sham(fun, jac, x0, tolx, tolf, nmax):
     matjac = jac(x0)
     if np.linalg.det(matjac) == 0:
         print("La matrice dello Jacobiano calcolata nell'iterato precedente non è a rango massimo")
-        return None,None,None
+        return None, None, None
 
     s = -np.linalg.solve(matjac, fun(x0))
     # Aggiornamento della soluzione
@@ -45,7 +45,7 @@ def my_newtonSys_sham(fun, jac, x0, tolx, tolf, nmax):
     while it <= nmax and np.linalg.norm(fx1, 1) >= tolf and np.linalg.norm(s, 1) >= tolx * np.linalg.norm(x1, 1):
         x0 = x1
         it += 1
-        if it % update==0:   #Valuto la matrice di iterazione nel nuovo iterato ogni "update" iterazioni
+        if it % update == 0:   #Valuto la matrice di iterazione nel nuovo iterato ogni "update" iterazioni
             matjac = jac(x0)
     
             if np.linalg.det(matjac) == 0:
