@@ -12,7 +12,7 @@ def plagr(xnodi,j):
     else:
        xzeri=np.append(xnodi[:j], xnodi[j+1:])
     
-    num = np.linalg.poly(xzeri)
+    num = np.poly(xzeri)
     den = np.polyval(num, xnodi[j])
     
     p=num/den
