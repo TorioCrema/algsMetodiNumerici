@@ -18,6 +18,7 @@ def gauss_seidel(A,b,x0,toll,it_max):
     while it <= it_max and errore >= toll:
         temp = b - F @ x0
         x, flag = Lsolve(M, temp)
+        # x = invM @ N @ x0 + invM @ b
         errore=np.linalg.norm(x-x0)/np.linalg.norm(x)
         er_vet.append(errore)
         x0=x.copy()

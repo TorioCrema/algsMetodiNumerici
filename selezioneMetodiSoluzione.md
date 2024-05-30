@@ -12,15 +12,15 @@ Se ben condizionata:
 Se mal condizionata:
 
 - Fattorizzazione QR
-  - La fattorizzazione QR di A `(m x n)` esiste se `rank(A) = n`
+  - La fattorizzazione QR di A `(n x n)` esiste se `rank(A) = n`
 
 Se simmetrica e definita positiva
 
-- Fattorizzazione di Cholesky
+- Fattorizzazione di Cholesky (`A = L @ L.T`)
 
 ### Grandi dimensioni e sparsa
 
-Se a diagonale strettamente dominante:
+Se a diagonale strettamente dominante (ogni elemento della diagonale != 0):
 
 - Jacobi
 - Gauss Seidel

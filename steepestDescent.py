@@ -21,7 +21,7 @@ def steepestdescent(A,b,x0,itmax,tol):
     vet_r.append(errore)
      
     # utilizzare il metodo del gradiente per trovare la soluzione
-    while it <= itmax and it < itmax:
+    while it <= itmax and errore >= tol:
         it = it + 1
         Ap = A @ p
        

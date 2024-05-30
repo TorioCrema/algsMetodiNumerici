@@ -16,7 +16,7 @@ def jacobi(A,b,x0,toll,it_max):
     
     er_vet=[]
     while it <= it_max and errore >= toll:
-        x = (b + N @ x0) / d.reshape(n, 1)
+        x = (b + N @ x0) / d.reshape(n, 1) # x = invM @ N @ x0 + invM @ b
         errore=np.linalg.norm(x-x0)/np.linalg.norm(x)
         er_vet.append(errore)
         x0=x.copy()
