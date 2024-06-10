@@ -665,7 +665,7 @@ convergenza e la velocità di apprendimento.
 - Momentum-based:
   - Utilizzano un momento che tiene conto dei gradienti precedenti per accelerare la convergenza.
   - Sono particolarmente efficaci per ridurre l'effetto di oscillazioni o rumore nella direzione del gradiente.
-  -  Possono aiutare a superare zone di plateau e minimi locali piatti.
+  - Possono aiutare a superare zone di plateau e minimi locali piatti.
 - Adagrad:
   - Adatta il learning rate per ciascun parametro in base alla somma dei gradienti passati.
   - Funziona bene in presenza di sparsi gradienti o feature sparse.
@@ -681,3 +681,69 @@ parametro.
   - È efficace in diverse situazioni e spesso offre una convergenza più rapida rispetto ad altri metodi di
 ottimizzazione. Tuttavia, può richiedere una scelta accurata dei suoi iperparametri per ottenere
 prestazioni ottimali
+
+## CNN
+
+Le reti di tipo MLP sono computazionalmente troppo pesanti per essere
+impiegate nell'elaborazione di immagini, in quanto sarebbe necessario
+prevedere un neurone per ogni pixel dell'immagine.
+
+Le CNN sono reti disegnate espressamente per processare immagini.
+Srotoliamo le immagini in input e organizziamo i neuroni in 3 dimensioni.
+
+A differenza del MLP, le CNN hanno una struttura a 3 dimensioni:
+
+- Larghezza (W)
+- Altezza (H)
+- Profondita' (C) di solito $>1$
+
+Come e' possibile "collegare" il kernel con l'immagine? Tramite una
+operazione matematica chiamata **convoluzione**, che e' applicata con
+un meccanismo _sliding-window_.
+
+### Convoluzione
+
+Una delle piu' importanti operazioni di **image processing** attraverso
+la quale si applicano filtri digitati, per estrarre feature dalle
+immagini.
+
+Un filtro (kernel) h di dimensione $d\times d$ viene fatto scorrere su ogni pixel
+$(x,y)$ di un immagine di input, $f$, per ogni posizione viene generato
+un valore di output $g(x,y)$, eseguendo il prodotto scalare tra la maschera
+e la porzione dell'input coperta (entrambi trattati come vettori).
+$$ g(x,y) = \sum^{F-d}_{i=0}\sum^{d-1}_{j=0}f(x,y)h(x-i,y-j) $$
+
+La convoluzione e' l'elemento costruttivo di base di una rete CNN,
+ogni kernel e' convoluto con i dati in input, generando una feature map.
+
+I pesi appresi (dell'MLP) sono raggruppati nel kernel e ogni cella e'
+un singolo peso che viene appreso.
+
+I layer convolutivi estraggono vari tipi di informazioni visuali
+in maniera gerarchica, nei layer vicini all'input vengono estratte
+informazioni "semplici", mentre in quelli lontani dall'input informazioni
+"complesse".
+
+Una CNN "tradizionale" e' composta da un insieme di layer sequenziali:
+![cnn](./cnn.png)
+
+### Pooling layer
+
+Il layer di pooling **riduce la dimensionalita'** del volume di input,
+viene spesso utilizzato per una serie di ragioni:
+
+- **Invarianza** alla posizione
+- **Riduzione del costo computazionale**
+- Aiuta a prevenire l'**overfitting**
+
+### Flatten layer
+
+**Layer di attivazione**, come funzioni di attivazione.
+
+Il flatten layer:
+
+- Tradizionalmente utilizzato per connettere il feature extractor con il
+classifier delle CNN
+- "Srotota" il volume di input
+
+Esistono anche altre tecniche per "srotolare" il volume di input.
