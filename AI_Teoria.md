@@ -711,7 +711,7 @@ Un filtro (kernel) h di dimensione $d\times d$ viene fatto scorrere su ogni pixe
 $(x,y)$ di un immagine di input, $f$, per ogni posizione viene generato
 un valore di output $g(x,y)$, eseguendo il prodotto scalare tra la maschera
 e la porzione dell'input coperta (entrambi trattati come vettori).
-$$ g(x,y) = \sum^{F-d}_{i=0}\sum^{d-1}_{j=0}f(x,y)h(x-i,y-j) $$
+$$ g(x,y) = \sum^{d-1}_{i=0}\sum^{d-1}_{j=0}f(x,y)h(x-i,y-j) $$
 
 La convoluzione e' l'elemento costruttivo di base di una rete CNN,
 ogni kernel e' convoluto con i dati in input, generando una feature map.
