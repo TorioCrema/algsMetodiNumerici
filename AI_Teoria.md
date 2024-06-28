@@ -460,6 +460,8 @@ addestramento e valutando le prestazioni su un set di dati di validazione. L'esp
 dominio e le best practice possono guidare la scelta degli iperparametri ottimali per un determinato
 problema di machine learning.
 
+![Valori learning rate](./effetto_learningrate.png)
+
 #### Ottimizzazioni
 
 Abbiamo visto che il GD aggiorna i parametri con
